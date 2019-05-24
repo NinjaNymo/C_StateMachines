@@ -40,11 +40,11 @@ void STANDBY(){
     asm("WFI"); /* Wait for interrupts */
 }
 
-static inline void ENTER_CRITICAL(){
+void ENTER_CRITICAL(){
     asm("CPSID I"); /* Disable interrupts */
 }
 
-static inline void LEAVE_CRITICAL(){
+void LEAVE_CRITICAL(){
     asm("CPSIE I"); /* Enable interrupts */
     asm("ISB");     /* Flush pipeline    */
 }
