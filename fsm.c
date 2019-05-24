@@ -51,6 +51,10 @@ void fsm_run(){
     }
 }
 
+void fsm_add_event(uint8_t in){
+    enqueue(&event_queue, in);
+}
+
 static void fsm_state_init(fsm_t *fsm, uint8_t event){
     switch(event){
     case EV_ENTRY:
@@ -65,10 +69,6 @@ static void fsm_state_init(fsm_t *fsm, uint8_t event){
     default:
         break;
     }
-}
-
-void fsm_add_event(uint8_t in){
-    enqueue(&event_queue, in);
 }
 
 static void fsm_init(fsm_t *fsm, state_fp init_state){
